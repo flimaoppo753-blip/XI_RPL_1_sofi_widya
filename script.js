@@ -1,14 +1,15 @@
-function tampilkanNama(){
-    document.getElementById("namaAnggota").innerHTML = `
-    <ol>
-        <style="list-style-type: decimal;
-        padding-left:5%;">
-        <li>sofi (flimaoppo753@gmail.com)</li>
-        <li>widya (widyautami54@gmail.com)</li>
-    </ol>
+function ubahWarna() {
+    let judul = document.getElementById("judul");
 
-        <button onclick="location.reload()">
-            tutup kembali
-        </button>
-    `;
-}                                                                                                                                                                                                                                                                                                                             
+    judul.classList.toggle("berubah");
+}
+
+function zoomGambar() {
+    let gambar = document.getElementById("gambarSpaghetti");
+
+    gambar.classList.toggle("zoom");
+}
+
+function pesan() {
+    alert("Pesanan akan segera hadir!");
+}
