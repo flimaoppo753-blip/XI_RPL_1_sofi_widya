@@ -3,562 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resep Mie Goreng</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <title>Resep Membuat Cireng</title>
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: #fffaf7;
-            color: #333;
-        }
-
-        /* NAVBAR */
-        header {
-            background: #171717;
-            padding: 18px 50px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo {
-            color: white;
-            font-family: cursive;
-            font-size: 30px;
-            font-style: italic;
-            font-weight: bold;
-        }
-
-        nav {
-            display: flex;
-            gap: 30px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            color: #ff4f7b;
-        }
-
-        /* TOMBOL PESAN */
-        .btn-pesan {
-            background: #ff4f7b;
-            color: white;
-            border: none;
-            padding: 12px 22px;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 15px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .btn-pesan:hover {
-            background: #e93663;
-            transform: scale(1.05);
-        }
-
-        /* HALAMAN UTAMA */
-        .utama {
-            text-align: center;
-            padding: 50px 20px;
-        }
-
-        .utama h1 {
-            font-family: cursive;
-            font-size: 55px;
-            animation: warnaMie 5s infinite;
-        }
-
-        @keyframes warnaMie {
-            0% {
-                color: #e83e68;
-            }
-
-            25% {
-                color: #ff7a00;
-            }
-
-            50% {
-                color: #369346;
-            }
-
-            75% {
-                color: #7b4bd4;
-            }
-
-            100% {
-                color: #e83e68;
-            }
-        }
-
-        .utama p {
-            margin-top: 10px;
-            color: #666;
-            font-size: 18px;
-        }
-
-        /* GAMBAR */
-        .gambar-box {
-            position: relative;
-            width: 80%;
-            max-width: 850px;
-            height: 380px;
-            margin: 30px auto 0;
-            overflow: visible;
-        }
-
-        .gambar-utama {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 18px;
-            cursor: zoom-in;
-            box-shadow: 0 5px 15px #bbb;
-            transition: transform 0.5s ease;
-        }
-
-        .gambar-utama.zoom {
-            transform: scale(1.35);
-            cursor: zoom-out;
-            position: relative;
-            z-index: 50;
-        }
-
-        .teks-zoom {
-            position: absolute;
-            left: 20px;
-            bottom: 15px;
-            background: rgba(0, 0, 0, 0.75);
-            color: white;
-            padding: 8px 13px;
-            border-radius: 7px;
-            font-size: 13px;
-            z-index: 60;
-            pointer-events: none;
-        }
-
-        /* RESEP */
-        .resep {
-            padding: 50px 8%;
-            background: white;
-        }
-
-        .resep > h2,
-        .izin > h2,
-        .kontak > h2 {
-            text-align: center;
-            font-family: cursive;
-            font-size: 38px;
-            color: #e83e68;
-            margin-bottom: 25px;
-        }
-
-        .resep-box {
-            max-width: 1100px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 18px;
-            box-shadow: 0 4px 15px #ddd;
-        }
-
-        .resep-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.3fr;
-            gap: 25px;
-        }
-
-        .bahan {
-            background: #fff4cf;
-            padding: 25px;
-            border-radius: 15px;
-            border: 1px solid #f0dd8b;
-        }
-
-        .cara {
-            background: #eaffea;
-            padding: 25px;
-            border-radius: 15px;
-            border: 1px solid #c6e4c0;
-        }
-
-        .bahan h3 {
-            color: #c47a00;
-            margin-bottom: 15px;
-        }
-
-        .cara h3 {
-            color: #369346;
-            margin-bottom: 15px;
-        }
-
-        ul,
-        ol {
-            padding-left: 25px;
-        }
-
-        li {
-            margin-bottom: 9px;
-            line-height: 1.5;
-        }
-
-        /* SURAT IZIN */
-        .izin {
-            padding: 50px 8%;
-            background: #f4f8ff;
-        }
-
-        .izin-box {
-            max-width: 850px;
-            margin: auto;
-            background: white;
-            padding: 35px;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px #ddd;
-            line-height: 1.7;
-        }
-
-        .izin-box h3 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        /* KONTAK */
-        .kontak {
-            padding: 50px 8%;
-            background: #fff5f7;
-        }
-
-        .anggota {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .anggota-box {
-            width: 220px;
-            background: white;
-            padding: 25px;
-            text-align: center;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px #ddd;
-        }
-
-        .anggota-box h3 {
-            color: #e83e68;
-            margin-bottom: 10px;
-        }
-
-        /* PESAN */
-        .pesan-box {
-            width: 90%;
-            max-width: 800px;
-            margin: 30px auto;
-            background: #ffe1e8;
-            border: 1px solid #f3b5c2;
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-        }
-
-        .pesan-box h2 {
-            color: #e83e68;
-            margin-bottom: 10px;
-        }
-
-        .pesan-box p {
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .pesan-sekarang {
-            background: #e83e68;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 9px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .pesan-sekarang:hover {
-            background: #c92e55;
-        }
-
-        /* FOOTER */
-        footer {
-            background: #171717;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        /* HP */
-        @media (max-width: 800px) {
-            header {
-                padding: 15px;
-                flex-wrap: wrap;
-                gap: 15px;
-            }
-
-            nav {
-                gap: 12px;
-                font-size: 13px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .utama h1 {
-                font-size: 40px;
-            }
-
-            .gambar-box {
-                width: 100%;
-                height: 280px;
-            }
-
-            .resep-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .gambar-utama.zoom {
-                transform: scale(1.15);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="resep.css">
 </head>
 
 <body>
 
     <!-- NAVBAR -->
-    <header>
+    <nav class="navbar">
+        <div class="logo">ResepKu</div>
 
-        <div class="logo">
-            ResepKu
-        </div>
-
-        <nav>
-            <a href="#utama">Halaman Utama</a>
-            <a href="#resep">Resep Makanan</a>
-            <a href="#izin">Surat Izin</a>
-            <a href="#kontak">Kontak Anggota</a>
-        </nav>
-
-        <button class="btn-pesan" onclick="pesan()">
-            🛒 Pesan
-        </button>
-
-    </header>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#alat">Alat</a></li>
+            <li><a href="#bahan">Bahan</a></li>
+            <li><a href="#cara">Cara Membuat</a></li>
+        </ul>
+    </nav>
 
 
-    <!-- HALAMAN UTAMA -->
-    <section class="utama" id="utama">
+    <!-- KONTEN -->
+    <main class="container">
 
-        <h1>Mie Goreng</h1>
-
-        <p>
-            Resep mie goreng sederhana yang lezat dan mudah dibuat.
-        </p>
-
-        <div class="gambar-box">
-
-            <img
-                id="gambarMie"
-                class="gambar-utama"
-                src="https://assets.dapurumami.com/uploads/recipe/mie-goreng-simple-z9n3yryq-91cc6abc28690cc635f7d56921b82963.webp"
-                alt="Mie Goreng"
-                onclick="zoomGambar()"
-            >
-
-            <div class="teks-zoom">
-                Klik gambar untuk zoom in / zoom out
-            </div>
-
-        </div>
-
-    </section>
+        <!-- JUDUL -->
+        <h1>Resep Membuat Cireng</h1>
 
 
-    <!-- RESEP MAKANAN -->
-    <section class="resep" id="resep">
-
-        <h2>Resep Mie Goreng</h2>
-
-        <div class="resep-box">
-
-            <div class="resep-grid">
-
-                <div class="bahan">
-
-                    <h3>🧺 Bahan-Bahan</h3>
-
-                    <ul>
-                        <li>2 bungkus mie telur</li>
-                        <li>1 butir telur</li>
-                        <li>2 siung bawang putih</li>
-                        <li>2 batang daun bawang</li>
-                        <li>100 gram sayuran</li>
-                        <li>2 sendok makan kecap manis</li>
-                        <li>1 sendok makan saus tiram</li>
-                        <li>Garam secukupnya</li>
-                        <li>Merica secukupnya</li>
-                        <li>Minyak goreng secukupnya</li>
-                    </ul>
-
-                </div>
+        <!-- FOTO -->
+        <div class="foto-container">
+    <img
+        src="https://images.unsplash.com/photo-1625220194771-7ebdea0b70b9"
+        alt="Cireng"
+        class="gambar-resep"
+    >
+</div>
 
 
-                <div class="cara">
+        <!-- ALAT -->
+        <section id="alat" class="card">
 
-                    <h3>👨‍🍳 Cara Membuat</h3>
+            <h2>Alat</h2>
 
-                    <ol>
-                        <li>Rebus mie sampai matang, kemudian tiriskan.</li>
-                        <li>Tumis bawang putih sampai harum.</li>
-                        <li>Masukkan telur lalu orak-arik hingga matang.</li>
-                        <li>Masukkan sayuran dan daun bawang.</li>
-                        <li>Tambahkan mie yang sudah direbus.</li>
-                        <li>Masukkan kecap manis dan saus tiram.</li>
-                        <li>Tambahkan garam dan merica.</li>
-                        <li>Aduk semua bahan sampai tercampur rata.</li>
-                        <li>Masak sebentar lalu angkat dan sajikan.</li>
-                    </ol>
+            <ul>
+                <li>Wajan</li>
+                <li>Spatula</li>
+                <li>Mangkuk</li>
+                <li>Sendok</li>
+                <li>Piring</li>
+            </ul>
 
-                </div>
+        </section>
 
-            </div>
+
+        <!-- BAHAN -->
+        <section id="bahan" class="card">
+
+            <h2>Bahan</h2>
+
+            <ul>
+                <li>250 gram tepung tapioka</li>
+                <li>50 gram tepung terigu</li>
+                <li>2 siung bawang putih</li>
+                <li>1 batang daun bawang</li>
+                <li>200 ml air</li>
+                <li>Garam secukupnya</li>
+                <li>Merica secukupnya</li>
+                <li>Minyak goreng secukupnya</li>
+            </ul>
+
+        </section>
+
+
+        <!-- CARA MEMBUAT -->
+        <section id="cara" class="card">
+
+            <h2>Cara Membuat</h2>
+
+            <ol>
+                <li>Haluskan bawang putih.</li>
+                <li>Campurkan tepung tapioka dan tepung terigu.</li>
+                <li>Tambahkan bawang putih, daun bawang, garam, dan merica.</li>
+                <li>Panaskan air hingga mendidih.</li>
+                <li>Tuangkan air panas sedikit demi sedikit ke dalam adonan.</li>
+                <li>Aduk hingga adonan dapat dibentuk.</li>
+                <li>Bentuk adonan menjadi pipih.</li>
+                <li>Panaskan minyak dalam wajan.</li>
+                <li>Goreng cireng hingga matang.</li>
+                <li>Angkat dan sajikan.</li>
+            </ol>
+
+        </section>
+
+
+        <!-- TOMBOL PESAN -->
+        <div class="pesan">
+
+            <button onclick="tampilkanPesan()">
+                Pesan
+            </button>
 
         </div>
 
-    </section>
-
-
-    <!-- PESAN -->
-    <div class="pesan-box">
-
-        <h2>🛒 Pesan Mie Goreng</h2>
-
-        <p>
-            Ingin memesan Mie Goreng? Klik tombol di bawah.
-        </p>
-
-        <button class="pesan-sekarang" onclick="pesan()">
-            Pesan Sekarang
-        </button>
-
-    </div>
-
-
-    <!-- SURAT IZIN -->
-    <section class="izin" id="izin">
-
-        <h2>Surat Izin</h2>
-
-        <div class="izin-box">
-
-            <h3>SURAT IZIN</h3>
-
-            <p>
-                Dengan hormat,
-            </p>
-
-            <p>
-                Kami memohon izin untuk melaksanakan kegiatan
-                pembuatan website resep makanan sebagai tugas
-                pembelajaran.
-            </p>
-
-            <br>
-
-            <p>
-                Demikian surat izin ini dibuat dengan sebenar-benarnya.
-                Atas perhatian dan izin yang diberikan, kami ucapkan
-                terima kasih.
-            </p>
-
-            <br>
-
-            <p style="text-align: right;">
-                Hormat kami,<br><br>
-                Kelompok Pembuat Website
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- KONTAK ANGGOTA -->
-    <section class="kontak" id="kontak">
-
-        <h2>Kontak Anggota</h2>
-
-        <div class="anggota">
-
-            <div class="anggota-box">
-                <h3>Anggota 1</h3>
-                <p>Nama: Sofi</p>
-                <p>RPL</p>
-            </div>
-
-            <div class="anggota-box">
-                <h3>Anggota 2</h3>
-                <p>Nama: Widya</p>
-                <p>RPL</p>
-            </div>
-
-            <div class="anggota-box">
-                <h3>Anggota 3</h3>
-                <p>Nama: Anggota</p>
-                <p>RPL</p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
-    <footer>
-        © 2026 ResepKu - Mie Goreng
-    </footer>
+    </main>
 
 
     <!-- JAVASCRIPT -->
-    <script>
-
-        function pesan() {
-            alert("Pesanan Mie Goreng akan segera hadir!");
-        }
-
-        function zoomGambar() {
-
-            let gambar = document.getElementById("gambarMie");
-
-            gambar.classList.toggle("zoom");
-
-        }
-
-    </script>
+    <script src="script.js"></script>
 
 </body>
-</html>
+</html>4R5
